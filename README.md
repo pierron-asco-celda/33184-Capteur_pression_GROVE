@@ -24,9 +24,9 @@ Pour l’utilisation de ce module, référez-vous aux indications présentes sur
 
 # RESSOURCES À TÉLÉCHARGER :
 
-Ressource utilisation : [LMV358](https://github.com/pierron-asco-celda/33167-Capteur_sonore_basse_GROVE/blob/main/src/Datasheet_LM2904DR.pdf)
+Ressource utilisation : [LMV358](https://github.com/pierron-asco-celda/33184-Capteur_pression_GROVE/blob/main/src/Datasheet_LMV358.pdf)
 
-Ressource utilisation : [MPX5700AP](https://github.com/pierron-asco-celda/33167-Capteur_sonore_basse_GROVE/blob/main/src/Datasheet_LM2904DR.pdf)
+Ressource utilisation : [MPX5700AP](https://github.com/pierron-asco-celda/33184-Capteur_pression_GROVE/blob/main/src/Datasheet_MPX5700AP.pdf)
 
 # Exemple :
 ### Arduino / C++
