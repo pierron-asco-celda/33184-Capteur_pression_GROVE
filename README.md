@@ -37,8 +37,8 @@ Ressource utilisation : [MPX5700AP](https://github.com/pierron-asco-celda/33184-
        Moniteur série -> Baud rate 9600.*
 */ 
 
-int offset = 410;
-int fullScale = 9630;
+int offset = 410; // cf. datasheet src 
+int fullScale = 9630; // cf. datasheet src
 int iBcl = 0;
 float fPre = 0;
 
@@ -53,7 +53,7 @@ void loop() {
   for (iBcl = 0; iBcl < 10; iBcl++) {
     iTem = iTem + analogRead(A0);
   }
-  fPre = (iTem - offset) * 700.0 / (fullScale - offset);
+  fPre = (iTem - offset) * 700.0 / (fullScale - offset); // cf. datasheet
 
   Serial.print("Pression : ");
   Serial.print(fPre, 2);
