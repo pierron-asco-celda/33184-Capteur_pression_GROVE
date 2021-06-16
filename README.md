@@ -37,7 +37,7 @@ Ressource utilisation : [MPX5700AP](https://github.com/pierron-asco-celda/33184-
        Moniteur série -> Baud rate 9600.*
 */ 
 
-int offset = 410; // cf. datasheet src 
+int offset = 300; // cf. datasheet src 
 int fullScale = 9630; // cf. datasheet src
 int iBcl = 0;
 float fPre = 0;
@@ -77,7 +77,7 @@ Afficheur I2C GROVE [33103](https://www.pierron.fr/interface-arduino-uno-5944.ht
 */
 #include <Wire.h>
 #include "rgb_lcd.h"
-int offset = 410; // cf. datasheet src
+int offset = 300; // cf. datasheet src
 int fullScale = 9630; // cf. datasheet src
 int iBcl = 0;
 float fPre = 0;
