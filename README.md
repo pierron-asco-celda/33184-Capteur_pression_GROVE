@@ -28,7 +28,7 @@ Ressource utilisation : [LMV358](https://github.com/pierron-asco-celda/33184-Cap
 
 Ressource utilisation : [MPX5700AP](https://github.com/pierron-asco-celda/33184-Capteur_pression_GROVE/blob/main/src/Datasheet_MPX5700AP.pdf)
 
-# Exemple :
+# Exemples :
 ### Arduino / C++
 ```cpp
 /*
@@ -61,6 +61,72 @@ void loop() {
   delay(200);
 }
 ```
+### Arduino / C++
+<br>
+
+Afficheur I2C GROVE [33103](https://www.pierron.fr/interface-arduino-uno-5944.html)
+
+![L-33103](/img/L-33103.jpg)
+
+```cpp
+/*
+    ** Mesure et affichage pression seringue (0 à 700 kPa), module Grove **
+       PIN A0 Module shield GROVE capteur pression
+       PIN I2C Module shield GROVE afficheur 
+       Utilisation bibliothèque rgb_lcd.h
+*/
+#include <Wire.h>
+#include "rgb_lcd.h"
+int offset = 410; // cf. datasheet src
+int fullScale = 9630; // cf. datasheet src
+int iBcl = 0;
+float fPre = 0;
+rgb_lcd lcd;
+
+void setup() {
+  lcd.begin(16, 2);
+  lcd.clear();
+  lcd.setCursor(4, 0);
+  lcd.print("PIERRON");
+  delay(1000);
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("~Mesure pression");
+  lcd.setCursor(3, 1);
+  lcd.print("0 a 700 kPa");
+  delay(1500);
+  lcd.clear();
+}
+
+void loop() {
+
+  int iTem = 0;
+
+  for (iBcl = 0; iBcl < 10; iBcl++) {
+    iTem = iTem + analogRead(A0);
+  }
+  fPre = (iTem - offset) * 700.0 / (fullScale - offset); // cf. datasheet
+
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Pression : ");
+  lcd.setCursor(3, 1);
+  lcd.print(fPre);
+  lcd.print(" kPa");
+
+    if ((fPre > 700) || (fPre < 0 )) {
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("~ERREUR MESURE !");
+    lcd.setCursor(3, 1);
+    lcd.print("0 a 700 kPa");
+  }
+
+  delay(250);
+  lcd.clear();
+}
+```
+![C-33103+33184](/img/C-33103+33184.jpg)
 ## À propos :
 <div style="text-align: justify">*Le débit en bauds est un taux de transfert de données en unités de bits par seconde (bps). Si le débit en bauds est de 9600, cela signifie que la possibilité d’envoyer des données est de 9600 bits en une seconde. 1 caractère est identique à 1 octet.</div>
 <br>
