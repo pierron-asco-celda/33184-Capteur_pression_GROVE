@@ -6,8 +6,8 @@
 */
 #include <Wire.h>
 #include "rgb_lcd.h"
-int offset = 300; // cf. datasheet src
-int fullScale = 9630; // cf. datasheet src
+int offset = 300; // cf. datasheet src (pression 0)
+int fullScale = 9630; // cf. datasheet src (pression MAX)
 int iBcl = 0;
 float fPre = 0;
 rgb_lcd lcd;
@@ -23,7 +23,7 @@ void setup() {
   lcd.print("~Mesure pression");
   lcd.setCursor(3, 1);
   lcd.print("0 a 700 kPa");
-  delay(1500);
+  delay(2000);
   lcd.clear();
 }
 
@@ -41,8 +41,8 @@ void loop() {
   lcd.setCursor(0, 0);
   lcd.print("Pression : ");
   lcd.setCursor(3, 1);
-  lcd.print(fPre);
-  lcd.print(" kPa");
+  lcd.print(fPre, 2);
+  lcd.print(" kPa ");
 
   if ((fPre > 700) || (fPre < 0 )) {
     lcd.clear();
@@ -50,7 +50,7 @@ void loop() {
     lcd.print("~ERREUR MESURE !");
     lcd.setCursor(3, 1);
     lcd.print("0 a 700 kPa");
-    
+
   }
 
   delay(250);
